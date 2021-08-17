@@ -40,7 +40,7 @@
           <p>guests</p>
           <button @click="minus"> - </button>
           <h6>{{num}}</h6>
-          <button @click="add"> + </button>
+          <button class="pb-1" @click="add"> + </button>
         </div>
         <div class="search">
           <button>search</button>
@@ -120,6 +120,23 @@
 
 
 <script>
+
+
+window.onscroll = function(){myFunction()}
+function myFunction(){
+  if(document.body.scrollTop > 120 || document.documentElement.scrollTop > 120){
+    document.querySelector('.borderAll').classList.add('animarez')
+  }else{
+    document.querySelector('.borderAll').classList.remove('animarez')
+  }
+  if(document.body.scrollTop > 360 || document.documentElement.scrollTop > 360){
+    document.querySelector('.search').classList.add('animarez2')
+  }else{
+    document.querySelector('.search').classList.remove('animarez2')
+  }
+}
+
+
 import { mapState } from 'vuex'
 export default {
   data() {
@@ -153,7 +170,54 @@ export default {
 </script>
 
 <style lang="scss">
-
+.animarez{
+  animation: reza 5s ease-in ;
+}
+@keyframes reza {
+  0%{
+    transform: translatey(150px);
+  }
+  25%{
+    transform: translatex(0);
+  }
+  50%{
+    transform: scale(.94);
+    
+  }
+  75%{
+    transform: translatex(10px);
+    
+  }
+  100%{
+    transform: translatex(0);
+     
+  }
+  
+}
+.animarez2{
+  animation: reza2 5s ease-in ;
+}
+@keyframes reza2 {
+  0%{
+    transform: translatey(0);
+  }
+  25%{
+   transform: scale(1.1);
+  }
+  50%{
+    transform: scale(.94);
+    
+  }
+  75%{
+    transform: translateX(8px);
+    
+  }
+  100%{
+    transform: translatex(0);
+     
+  }
+  
+}
 
 .homeDesign{
   width: 100%;
@@ -161,6 +225,7 @@ export default {
   background-color: #fff;
   position: relative;
   z-index: -1;
+  transition: all 0.5s ease;
   .contentHome{
     text-align: left;
     position: absolute;
@@ -478,10 +543,11 @@ export default {
 }
 
 .borderAll{
-  border: 20px solid rgb(231, 46, 46);
+  border: 20px solid rgb(255, 255, 255);
   border-radius: 200px;
   border-bottom: 0;
   margin: -20px 80px;
+  box-shadow: 5px 5px 10px rg(0,0,0,.5);
   
 .searchbox{
   border: 1px solid #999;
@@ -599,9 +665,12 @@ export default {
       font-size: 23px;
       text-transform: capitalize;
       border: none;
-      background-color: rgb(236, 163, 28);
+      background-color: rgb(219, 45, 45);
+       color: #fff;
+       box-shadow: 5px 5px 10px rgba(0,0,0,.5);
       &:hover{
-        background-color: rgb(228, 176, 80);
+        background-color: rgb(228, 64, 64);
+        color: #999;
       }
     }
   }
@@ -621,15 +690,17 @@ export default {
     transform: translateX(0);
   }
 }
-// -----------chearch box---------------
+// -----------shearch box---------------
 
 @media screen and (min-width:990px){
   
 .borderAll{
-  border: 20px solid rgb(231, 46, 46);
+  border: 20px solid rgb(255, 255, 255);
   border-radius: 200px;
   border-bottom: 0;
   margin: -20px 80px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,.5);
+  
   
 .searchbox{
   border: 1px solid #999;
@@ -653,7 +724,7 @@ export default {
     }
    
     img{
-      width: 20px;
+      width: 25px;
       
     }
     input{
@@ -663,6 +734,7 @@ export default {
       padding: 5px 1px;
       margin-top: 10px;
       background-color: transparent;
+      letter-spacing: 5px;
       &:active{
         outline: none;
       }
@@ -750,10 +822,12 @@ export default {
       font-size: 23px;
       text-transform: capitalize;
       border: none;
-      background-color: rgb(236, 163, 28);
-      transition: all 0.3s ease-in;
+      background-color: rgb(219, 45, 45);
+       color: #fff;
+       box-shadow: 5px 5px 10px rgba(0,0,0,.5);
       &:hover{
-        background-color: rgb(228, 176, 80);
+        background-color: rgb(228, 64, 64);
+        color: #999;
       }
     }
   }
@@ -888,10 +962,11 @@ export default {
 @media screen and (min-width:1300px){
   
 .borderAll{
-  border: 20px solid rgb(231, 46, 46);
+  border: 20px solid rgb(255, 255, 255);
   border-radius: 200px;
   border-bottom: 0;
   margin: -20px 80px;
+   box-shadow: 5px 5px 10px rgba(0,0,0,.5);
   
 .searchbox{
   border: 1px solid #999;
@@ -906,7 +981,7 @@ export default {
     width: 350px;
     text-align: center;
     border-right: 1px solid #999;
-    
+    padding-bottom: 20px;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     &:hover{
@@ -921,9 +996,11 @@ export default {
       text-transform: capitalize;
       border: none;
       margin-left: 10px;
-      padding: 5px 10px;
-      margin-top: 30px;
+      padding: 5px 10px 5px 10px;
+      margin-top: 10px;
       background-color: transparent;
+      letter-spacing: 2px;
+      
       &:active{
         outline: none;
       }
@@ -989,6 +1066,8 @@ export default {
       font-size: 25px;
       padding-left: 10px;
       border-radius: 50%;
+      margin-top: 5px;
+      
       &:hover{
         background-color: rgba(238, 161, 17,.1);
       }
@@ -1009,9 +1088,12 @@ export default {
       font-size: 23px;
       text-transform: capitalize;
       border: none;
-      background-color: rgb(236, 163, 28);
+       background-color: rgb(219, 45, 45);
+       color: #fff;
+       box-shadow: 5px 5px 10px rgba(0,0,0,.5);
       &:hover{
-        background-color: rgb(228, 176, 80);
+        background-color: rgb(228, 64, 64);
+        color: #999;
       }
     }
   }
